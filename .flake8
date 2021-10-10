@@ -1,0 +1,21 @@
+[flake8]
+# default options
+max-complexity = 5
+ignore =
+    # flake8-import-order doesn't works correct with multi-lined
+    # summary which interpreted like missing
+    D205
+    # at this porject it is preferable to name
+    # exceptions without `Error` suffix
+    N818
+per-file-ignores =
+    # ignore docstring warnings in tests
+    backend/tests/*:D
+
+# docstrings options (flake8-docstrings)
+docstring-convention=numpy
+
+# imports options (flake8-import-order)
+import_order_style = smarkets
+## first-party packages names
+application-import-names = api
