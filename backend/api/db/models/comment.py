@@ -30,7 +30,7 @@ class Comment(BaseModel):
     """Модель комментария."""
 
     content = TextField()
-    timestamp = DateTimeField(default=dt.datetime.now())
+    timestamp = DateTimeField(default=dt.datetime.now)
     topic = CharField(max_length=8, null=True)
 
     parent = ForeignKeyField("self", null=True)
