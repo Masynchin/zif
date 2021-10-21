@@ -17,10 +17,15 @@ export default function App() {
 
       <Switch>
         <Route
+          exact
+          path="/:topic(it|chaos|politics|watch)"
+          component={TopicPage}
+        />
+        <Route
+          exact
           path="/:topic(it|chaos|politics|watch)/:threadId"
           component={Thread}
         />
-        <Route path="/:topic(it|chaos|politics|watch)" component={TopicPage} />
       </Switch>
     </Router>
   );
