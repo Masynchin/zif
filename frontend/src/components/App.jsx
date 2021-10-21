@@ -18,12 +18,9 @@ export default function App() {
       <Switch>
         <Route
           path="/:topic(it|chaos|politics|watch)/:threadId"
-          children={<Thread />}
+          component={Thread}
         />
-        <Route
-          path="/:topic(it|chaos|politics|watch)"
-          children={<TopicPage />}
-        />
+        <Route path="/:topic(it|chaos|politics|watch)" component={TopicPage} />
       </Switch>
     </Router>
   );
