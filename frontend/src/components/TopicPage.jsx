@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CreateThread from "./CreateThread/Button";
-import Comment from "./Comment/Comment";
+import CommentsList from "./CommentsList";
 
 export default function TopicPage() {
   const { topic } = useParams();
@@ -18,7 +18,7 @@ export default function TopicPage() {
     <div className="flex flex-col items-center space-y-2 p-4">
       <CreateThread />
       {comments.length ? (
-        comments.map((comment) => <Comment key={comment.id} {...comment} />)
+        <CommentsList comments={comments} />
       ) : (
         <p>Похоже, что ещё нет комментариев</p>
       )}
