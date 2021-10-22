@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import CreateThread from "./CreateThread/Button";
+import CreateThread from "./CreateThread";
 import CommentsList from "./CommentsList";
 
 export default function TopicPage() {
