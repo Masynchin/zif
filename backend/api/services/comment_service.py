@@ -27,7 +27,7 @@ def get_threads_heads() -> List[Comment]:
 
 
 def get_topic_threads_heads(topic: str) -> List[Comment]:
-    """Получение начальных комментариев обсуждений."""
+    """Получение начальных комментариев обсуждений темы `topic`."""
     threads_heads = Comment.select().where(
         Comment.topic == topic, Comment.parent.is_null()
     )
