@@ -9,11 +9,11 @@ export default function App() {
   return (
     <Router>
       <Nav>
-        <NavItem href="/">/</NavItem>
-        <NavItem href="/it">IT</NavItem>
-        <NavItem href="/chaos">Срач</NavItem>
-        <NavItem href="/politics">Политика</NavItem>
-        <NavItem href="/watch">Попузырить</NavItem>
+        <NavItem href="">/</NavItem>
+        <NavItem href="it">IT</NavItem>
+        <NavItem href="chaos">Срач</NavItem>
+        <NavItem href="politics">Политика</NavItem>
+        <NavItem href="watch">Попузырить</NavItem>
       </Nav>
 
       <Switch>
