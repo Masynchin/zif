@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import CommentsList from "./CommentsList";
+import { withChildren } from "./utils";
 
 export default function Thread() {
   const { topic, threadId } = useParams();
@@ -18,20 +19,4 @@ export default function Thread() {
       <CommentsList comments={comments} />
     </div>
   );
-}
-
-function withChildren(comments) {
-  const parentChildren = new Map();
-  comments.forEach(({ id, parent_id }) => {
-    if (!parent_id) {
-      return;
-    }
-    if (!parentChildren.has(parent_id)) {
-      parentChildren.set(parent_id, []);
-    }
-    parentChildren.get(parent_id).push({ id: id });
-  });
-  return comments.map((comment) => {
-    return { ...comment, children: parentChildren.get(comment.id) || [] };
-  });
 }
