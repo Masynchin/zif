@@ -11,6 +11,13 @@ from api.services import comment_service
 router = APIRouter(prefix="/comments")
 
 
+@router.get("/", response_model=List[CommentGet])
+async def handle_get_threads_heads():
+    """Получение начал обсуждений всех тем."""
+    threads_heads = comment_service.get_threads_heads()
+    return tuple(threads_heads)
+
+
 @router.get("/{topic}", response_model=List[CommentGet])
 async def handle_get_topic_threads_heads(topic: str):
     """Получение начал обсуждений темы `topic`."""

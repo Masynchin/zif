@@ -20,6 +20,12 @@ def create_comment(comment_data: CommentCreate) -> Comment:
         return comment
 
 
+def get_threads_heads() -> List[Comment]:
+    """Получение начальных комментариев обсуждений всех тем."""
+    threads_heads = Comment.select().where(Comment.parent.is_null())
+    return threads_heads
+
+
 def get_topic_threads_heads(topic: str) -> List[Comment]:
     """Получение начальных комментариев обсуждений."""
     threads_heads = Comment.select().where(
