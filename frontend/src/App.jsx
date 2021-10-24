@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Nav from "./Nav";
-import NavItem from "./NavItem";
-import TopicPage from "./TopicPage";
-import ThreadPage from "./ThreadPage";
-import MainPage from "./MainPage";
+import Nav from "./components/Nav";
+import NavItem from "./components/NavItem";
+import MainPage from "./pages/MainPage";
+import TopicPage from "./pages/TopicPage";
+import ThreadPage from "./pages/ThreadPage";
 
 export default function App() {
   return (

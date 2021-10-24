@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import CommentsList from "./CommentsList";
-import { withChildren } from "./utils";
+import CommentsList from "../components/CommentsList";
+import { withChildren } from "../components/utils";
 
 export default function MainPage() {
   const [threadsHeads, setThreadsHeads] = useState([]);

@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import CreateThread from "./CreateThread";
-import CommentsList from "./CommentsList";
-import { withChildren } from "./utils";
+import CreateThread from "../components/CreateThread";
+import CommentsList from "../components/CommentsList";
+import { withChildren } from "../components/utils";
 
 export default function TopicPage() {
   const { topic } = useParams();
