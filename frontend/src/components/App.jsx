@@ -3,6 +3,7 @@ import Nav from "./Nav";
 import NavItem from "./NavItem";
 import TopicPage from "./TopicPage";
 import Thread from "./Thread";
+import MainPage from "./MainPage";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       </Nav>
 
       <Switch>
+        <Route exact path="/" component={MainPage} />
         <Route
           exact
           path="/:topic(it|chaos|politics|watch)"
