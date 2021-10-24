@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import CommentsList from "./CommentsList";
 import { withChildren } from "./utils";
 
-export default function Thread() {
+export default function ThreadPage() {
   const { topic, threadId } = useParams();
   const [comments, setComments] = useState([]);
 

@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from "./Nav";
 import NavItem from "./NavItem";
 import TopicPage from "./TopicPage";
-import Thread from "./Thread";
+import ThreadPage from "./ThreadPage";
 import MainPage from "./MainPage";
 
 export default function App() {
@@ -26,7 +26,7 @@ export default function App() {
         <Route
           exact
           path="/:topic(it|chaos|politics|watch)/:threadId"
-          component={Thread}
+          component={ThreadPage}
         />
       </Switch>
     </Router>
