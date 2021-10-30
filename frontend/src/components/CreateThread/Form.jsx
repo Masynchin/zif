@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 
 const style = {
   backgroundColor: "rgba(220, 38, 38)",
-  color: "rgba(255, 255, 255",
+  color: "rgb(255, 255, 255)",
 };
 
 export default function Form() {
