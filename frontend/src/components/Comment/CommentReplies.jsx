@@ -1,12 +1,14 @@
+import { Link } from "react-router-dom";
+
 export default function CommentReplies({ replies }) {
   return (
     <div className="flex space-x-2">
       {replies.map((reply) => (
-        <a
+        <Link
           key={reply.id}
-          href={`#${reply.id}`}
+          to={`#${reply.id}`}
           className="text-red-500"
-        >{`#${reply.id}`}</a>
+        >{`#${reply.id}`}</Link>
       ))}
     </div>
   );

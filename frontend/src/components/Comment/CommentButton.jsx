@@ -1,11 +1,13 @@
+import { Link } from "react-router-dom";
+
 export default function CommentButton({ url, id, children }) {
   return (
-    <a
+    <Link
       role="button"
-      href={`${url}/${id}`}
+      to={`${url}/${id}`}
       className="font-sans font-semibold text-red-600"
     >
       {children}
-    </a>
+    </Link>
   );
 }
