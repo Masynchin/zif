@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useParams } from "react-router";
 
 const style = {
-  "background-color": "rgba(220, 38, 38)",
+  backgroundColor: "rgba(220, 38, 38)",
   color: "rgba(255, 255, 255",
 };
 
