@@ -7,7 +7,7 @@ const style = {
   color: "rgb(255, 255, 255)",
 };
 
-export default function Form() {
+export default function Form({ closeForm }) {
   const { topic } = useParams();
   const [commentText, setCommentText] = useState("");
 
@@ -16,6 +16,7 @@ export default function Form() {
     postComment(fromParams(commentText, topic)).then((comment) =>
       console.log(comment)
     );
+    closeForm();
     event.preventDefault();
   };
 

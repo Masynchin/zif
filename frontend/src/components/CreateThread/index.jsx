@@ -5,6 +5,7 @@ const style = { width: "768px" };
 
 export default function CreateThread() {
   const [clicked, setClicked] = useState(false);
+  const closeForm = () => setClicked(false);
 
   return (
     <button
@@ -13,7 +14,7 @@ export default function CreateThread() {
       style={style}
     >
       Новое обсуждение
-      {clicked && <Form />}
+      {clicked && <Form closeForm={closeForm} />}
     </button>
   );
 }
