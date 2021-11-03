@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import CommentsList from "../components/CommentsList";
+import ThreadsHeadsList from "../components/ThreadsHeadsList";
 
 export default function MainPage() {
   const [threadsHeads, setThreadsHeads] = useState([]);
@@ -14,7 +14,7 @@ export default function MainPage() {
   return (
     <div className="flex flex-col items-center space-y-2 p-4">
       {threadsHeads.length ? (
-        <CommentsList comments={threadsHeads} />
+        <ThreadsHeadsList threadsHeads={threadsHeads} />
       ) : (
         <p>Похоже, что ещё нет ни одного обсуждения</p>
       )}
