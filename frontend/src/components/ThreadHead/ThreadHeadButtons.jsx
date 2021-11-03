@@ -1,13 +1,13 @@
 import { useRouteMatch } from "react-router";
-import CommentButton from "./CommentButton";
+import CommentButton from "../Comment/CommentButton";
 
-export default function CommentButtons({ id }) {
+export default function ThreadHeadButtons({ id }) {
   let { url } = useRouteMatch();
 
   return (
     <div className="flex space-x-4">
       <CommentButton url={url} id={id}>
-        Ответить
+        К обсуждению
       </CommentButton>
     </div>
   );

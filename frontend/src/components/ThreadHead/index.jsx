@@ -1,6 +1,6 @@
 import CommentHeader from "../Comment/CommentHeader";
 import CommentBody from "../Comment/CommentBody";
-import CommentButtons from "../Comment/CommentButtons";
+import ThreadHeadButtons from "./ThreadHeadButtons";
 
 const style = { width: "768px" };
 
@@ -13,7 +13,7 @@ export default function ThreadHead({ id, content, timestamp }) {
     >
       <CommentHeader id={id} timestamp={timestamp} />
       <CommentBody content={content} />
-      <CommentButtons id={id} />
+      <ThreadHeadButtons id={id} />
     </div>
   );
 }
