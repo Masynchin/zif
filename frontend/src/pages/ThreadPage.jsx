@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import CommentsList from "../components/CommentsList";
-import { withChildren } from "../components/utils";
+import { withReplies } from "../components/utils";
 
 export default function ThreadPage() {
   const { topic, threadId } = useParams();
@@ -11,7 +11,7 @@ export default function ThreadPage() {
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/comments/${topic}/${threadId}`)
-      .then((response) => setComments(withChildren(response.data)));
+      .then((response) => setComments(withReplies(response.data)));
   }, [topic, threadId]);
 
   return (

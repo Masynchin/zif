@@ -1,4 +1,4 @@
-export function withChildren(comments) {
+export function withReplies(comments) {
   const parentChildren = new Map();
   comments.forEach(({ id, parent_id }) => {
     if (!parent_id) {
@@ -10,6 +10,6 @@ export function withChildren(comments) {
     parentChildren.get(parent_id).push({ id: id });
   });
   return comments.map((comment) => {
-    return { ...comment, children: parentChildren.get(comment.id) || [] };
+    return { ...comment, replies: parentChildren.get(comment.id) || [] };
   });
 }

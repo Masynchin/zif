@@ -10,7 +10,7 @@ export default function Comment({
   parent_id,
   content,
   timestamp,
-  children,
+  replies,
 }) {
   return (
     <div
@@ -20,7 +20,7 @@ export default function Comment({
     >
       <CommentHeader id={id} timestamp={timestamp} />
       <CommentBody parent_id={parent_id} content={content} />
-      <CommentReplies replies={children} />
+      <CommentReplies replies={replies} />
       <CommentButtons id={id} />
     </div>
   );
