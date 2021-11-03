@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import CommentsList from "../components/CommentsList";
-import { withReplies } from "../components/utils";
 
 export default function MainPage() {
   const [threadsHeads, setThreadsHeads] = useState([]);
@@ -9,7 +8,7 @@ export default function MainPage() {
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/comments/")
-      .then((response) => setThreadsHeads(withReplies(response.data)));
+      .then((response) => setThreadsHeads(response.data));
   }, []);
 
   return (

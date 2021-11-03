@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CreateThread from "../components/CreateThread";
 import CommentsList from "../components/CommentsList";
-import { withReplies } from "../components/utils";
 
 export default function TopicPage() {
   const { topic } = useParams();
@@ -12,7 +11,7 @@ export default function TopicPage() {
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/comments/${topic}`)
-      .then((response) => setComments(withReplies(response.data)));
+      .then((response) => setComments(response.data));
   }, [topic]);
 
   return (
