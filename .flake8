@@ -18,4 +18,4 @@ docstring-convention=numpy
 # imports options (flake8-import-order)
 import_order_style = smarkets
 ## first-party packages names
-application-import-names = api
+application-import-names = api,config
