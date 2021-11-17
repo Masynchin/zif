@@ -1,0 +1,3 @@
+export const TOPIC_FETCH = "TOPIC/FETCH";
+export const TOPIC_FETCH_SUCCESS = "TOPIC/FETCH_SUCCESS";
+export const TOPIC_INSERT = "TOPIC/INSERT";

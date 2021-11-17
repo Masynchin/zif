@@ -1,16 +1,17 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { getThread } from "../store/actions/thread";
 import CommentsList from "../components/CommentsList";
 
 export default function ThreadPage() {
   const { topic, threadId } = useParams();
-  const [comments, setComments] = useState([]);
+
+  const dispatch = useDispatch();
+  const comments = useSelector((state) => state.thread.data);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/api/comments/${topic}/${threadId}`)
-      .then((response) => setComments(response.data));
+    dispatch(getThread(topic, threadId));
   }, [topic, threadId]);
 
   return (

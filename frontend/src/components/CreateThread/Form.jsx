@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { useParams } from "react-router";
+import { useDispatch } from "react-redux";
+import { insertTopic } from "../../store/actions/topic";
 
 const style = {
   backgroundColor: "rgba(220, 38, 38)",
@@ -11,13 +13,14 @@ export default function Form({ closeForm }) {
   const { topic } = useParams();
   const [commentText, setCommentText] = useState("");
 
+  const dispatch = useDispatch();
+
   const onChange = (event) => setCommentText(event.target.value);
   const onSubmit = (event) => {
-    postComment(fromParams(commentText, topic)).then((comment) =>
-      console.log(comment)
-    );
-    closeForm();
     event.preventDefault();
+    const comment = fromParams(commentText, topic);
+    dispatch(insertTopic(comment));
+    closeForm();
   };
 
   return (
@@ -42,10 +45,4 @@ function fromParams(text, topic) {
     content: text,
     topic: topic,
   };
-}
-
-function postComment(comment) {
-  return axios
-    .post("http://localhost:8000/api/comments/", comment)
-    .then((response) => response.data);
 }
