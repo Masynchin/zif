@@ -1,16 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ThreadsHeadsList from "../components/ThreadsHeadsList";
-import * as api from "../api";
+import { getGeneral } from "../store/actions/general";
 
 export default function MainPage() {
-  const [threadsHeads, setThreadsHeads] = useState([]);
+  const dispatch = useDispatch();
+  const threadsHeads = useSelector((state) => state.general.data);
 
-  useEffect(() => {
-    (async () => {
-      const threads = await api.getAllThreads();
-      setThreadsHeads(threads);
-    })();
-  }, []);
+  useEffect(() => dispatch(getGeneral()), []);
 
   return (
     <div className="flex flex-col items-center space-y-2 p-4">

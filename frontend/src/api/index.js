@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export async function getAllThreads() {
+export async function getGeneral() {
   return (await axios.get("http://localhost:8000/api/comments/")).data;
 }
 
