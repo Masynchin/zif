@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getTopic } from "../store/actions/topic";
-import CreateThread from "../components/CreateThread";
+import ThreadForm from "../components/ThreadForm";
 import ThreadsHeadsList from "../components/ThreadsHeadsList";
 
 export default function TopicPage() {
@@ -15,7 +15,7 @@ export default function TopicPage() {
 
   return (
     <div className="flex flex-col items-center space-y-2 p-4">
-      <CreateThread />
+      <ThreadForm />
       {threadsHeads.length ? (
         <ThreadsHeadsList threadsHeads={threadsHeads} />
       ) : (

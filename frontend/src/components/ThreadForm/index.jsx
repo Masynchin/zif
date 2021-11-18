@@ -3,7 +3,7 @@ import Form from "./Form";
 
 const style = { width: "768px" };
 
-export default function CreateThread() {
+export default function ThreadForm() {
   const [clicked, setClicked] = useState(false);
   const closeForm = () => setClicked(false);
 
