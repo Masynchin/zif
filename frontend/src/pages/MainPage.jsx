@@ -1,14 +1,15 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import ThreadsHeadsList from "../components/ThreadsHeadsList";
+import * as api from "../api";
 
 export default function MainPage() {
   const [threadsHeads, setThreadsHeads] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/comments/")
-      .then((response) => setThreadsHeads(response.data));
+    (async () => {
+      const threads = await api.getAllThreads();
+      setThreadsHeads(threads);
+    })();
   }, []);
 
   return (

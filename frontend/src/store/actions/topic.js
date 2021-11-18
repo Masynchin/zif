@@ -1,9 +1,9 @@
-import axios from "axios";
 import {
   TOPIC_FETCH,
   TOPIC_FETCH_SUCCESS,
   TOPIC_INSERT,
 } from "../reducers/topic/types";
+import * as api from "../../api";
 
 export const getTopic = (topicName) => async (dispatch, getState) => {
   const storeData = getState().topic;
@@ -13,13 +13,11 @@ export const getTopic = (topicName) => async (dispatch, getState) => {
 
   dispatch({ type: TOPIC_FETCH });
 
-  const response = await axios.get(
-    `http://localhost:8000/api/comments/${topicName}`
-  );
+  const topicData = await api.getTopic(topicName);
 
   dispatch({
     type: TOPIC_FETCH_SUCCESS,
-    payload: response.data,
+    payload: topicData,
   });
 };
 
@@ -29,13 +27,10 @@ export const insertTopic = (comment) => async (dispatch, getState) => {
     return Promise.resolve();
   }
 
-  const response = await axios.post(
-    "http://localhost:8000/api/comments/",
-    comment
-  );
+  const threadHead = await api.insertTopic(comment);
 
   dispatch({
     type: TOPIC_INSERT,
-    payload: response.data.__data__,
+    payload: threadHead,
   });
 };

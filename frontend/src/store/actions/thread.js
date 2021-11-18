@@ -1,9 +1,9 @@
-import axios from "axios";
 import {
   THREAD_FETCH,
   THREAD_FETCH_SUCCESS,
   THREAD_INSERT,
 } from "../reducers/thread/types";
+import * as api from "../../api";
 
 export const getThread = (topic, threadId) => async (dispatch, getState) => {
   const storeData = getState().thread;
@@ -13,12 +13,10 @@ export const getThread = (topic, threadId) => async (dispatch, getState) => {
 
   dispatch({ type: THREAD_FETCH });
 
-  const response = await axios.get(
-    `http://localhost:8000/api/comments/${topic}/${threadId}`
-  );
+  const threadData = await api.getThread(topic, threadId);
 
   dispatch({
     type: THREAD_FETCH_SUCCESS,
-    payload: response.data,
+    payload: threadData,
   });
 };
