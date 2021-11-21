@@ -3,11 +3,6 @@ import { useParams } from "react-router";
 import { useDispatch } from "react-redux";
 import { insertTopic } from "../../store/actions/topic";
 
-const style = {
-  backgroundColor: "rgba(220, 38, 38)",
-  color: "rgb(255, 255, 255)",
-};
-
 export default function Form({ closeForm }) {
   const { topic } = useParams();
   const [commentText, setCommentText] = useState("");
@@ -32,8 +27,7 @@ export default function Form({ closeForm }) {
       ></textarea>
       <input
         type="submit"
-        className="w-full border border-red-300 rounded cursor-pointer py-1"
-        style={style}
+        className="w-full border border-red-300 rounded cursor-pointer py-1 text-white bg-red-600"
       ></input>
     </form>
   );
