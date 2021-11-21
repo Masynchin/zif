@@ -10,9 +10,7 @@ export default function ThreadPage() {
   const dispatch = useDispatch();
   const comments = useSelector((state) => state.thread.data);
 
-  useEffect(() => {
-    dispatch(getThread(topic, threadId));
-  }, [topic, threadId]);
+  useEffect(() => dispatch(getThread(topic, threadId)), [topic, threadId]);
 
   return (
     <div className="flex flex-col items-center space-y-2 p-4">
