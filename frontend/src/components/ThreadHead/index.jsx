@@ -2,7 +2,7 @@ import CommentHeader from "../Comment/CommentHeader";
 import CommentBody from "../Comment/CommentBody";
 import ThreadHeadButtons from "./ThreadHeadButtons";
 
-export default function ThreadHead({ id, content, timestamp }) {
+export default function ThreadHead({ id, content, timestamp, topic }) {
   return (
     <div
       id={id}
@@ -10,7 +10,7 @@ export default function ThreadHead({ id, content, timestamp }) {
     >
       <CommentHeader id={id} timestamp={timestamp} />
       <CommentBody content={content} />
-      <ThreadHeadButtons id={id} />
+      <ThreadHeadButtons id={id} topic={topic} />
     </div>
   );
 }
