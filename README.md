@@ -8,20 +8,36 @@
 
 Это - форум, маленькая версия Двача.
 
-## Структура
+## Технологии
 
-- Фронт - React
-- Бэк - FastAPI
+Фронт:
+- [React](https://github.com/facebook/react) (через [create-react-app](https://github.com/facebook/create-react-app))
+- [Redux](https://github.com/reduxjs/redux)
+- [TailwindCSS](https://github.com/tailwindlabs/tailwindcss)
+
+Бэк:
+- [FastAPI](https://github.com/tiangolo/fastapi) - веб-фреймворк
+- [PeeWee](https://github.com/coleifer/peewee) - ORM
 
 ## Запуск
 
-Для запуска в разработке:
+При разработке:
 
-- Фронт - `npm run start`
-- Бэк - `uvicorn --factory main:create_app`
+~~~sh
+# /frontend
+npm run start
 
-Для запуска в продакшене:
+# /backend
+uvicorn --factory main:create_app
+~~~
 
-- Фронт - `npm run build`
-- Бэк - Указать переменную окружения `stage=prod`
-`uvicorn --factory main:create_app`
+В продакшене (обслуживание собранного React-приложения с помощью FastAPI):
+
+~~~sh
+# /frontend
+npm run build
+
+# /backend
+set stage=prod
+uvicorn --factory main:create_app
+~~~
