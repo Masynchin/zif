@@ -5,7 +5,7 @@ export default function NavItem({ to, children }) {
     <li>
       <NavLink
         to={to}
-        className="text-2xl block px-2 py-1 hover:text-red-600"
+        className="font-sans text-2xl block px-2 py-1 hover:text-red-600"
         activeClassName="text-red-600"
       >
         {children}
