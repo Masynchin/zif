@@ -12,10 +12,10 @@ export default function CommentBody({ parent_id, content }) {
 function parseCommentContent(text) {
   return text
     .split("\n")
-    .map((line, i) =>
-      line.startsWith(">") ? <ColoredSpan key={i} text={line} /> : line
-    )
-    .flatMap((element) => [<br />, element])
+    .flatMap((line, i) => [
+      <br />,
+      line.startsWith(">") ? <ColoredSpan key={i} text={line} /> : line,
+    ])
     .slice(1);
 }
 
