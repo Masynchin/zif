@@ -26,11 +26,11 @@ export default function Form({ closeForm }) {
         placeholder="Напишите стартовый комментарий..."
         className="w-full border border-gray-300 rounded shadow-sm focus:border-red-300 focus:ring-red-300"
         onChange={onChange}
-      ></TextareaAutosize>
+      />
       <input
         type="submit"
         className="w-full border border-red-300 rounded cursor-pointer py-1 text-white bg-red-600"
-      ></input>
+      />
     </form>
   );
 }
