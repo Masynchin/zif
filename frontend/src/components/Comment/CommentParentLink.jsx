@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function CommentParentLink({ parent_id }) {
-  return parent_id ? (
+  return (
     <>
       <Link
         to={`#${parent_id}`}
@@ -10,5 +10,5 @@ export default function CommentParentLink({ parent_id }) {
       to
       <br></br>
     </>
-  ) : null;
+  );
 }
