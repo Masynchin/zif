@@ -19,7 +19,7 @@ def setup_db():
     db.create_tables([Comment])
 
 
-async def setup_test_db():
+def setup_test_db():
     """Инициализация БД для тестов."""
     from api.db.models import Comment
 
@@ -27,6 +27,6 @@ async def setup_test_db():
     db.create_tables([Comment])
 
 
-async def close_test_db():
+def close_test_db():
     """Закрытие БД для тестов."""
     db.close()
