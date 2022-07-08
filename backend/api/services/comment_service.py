@@ -22,16 +22,16 @@ def create_comment(comment_data: CommentCreate) -> Comment:
 
 def get_threads_heads() -> List[Comment]:
     """Получение начальных комментариев обсуждений всех тем."""
-    threads_heads = Comment.select().where(Comment.parent.is_null())
-    return threads_heads
+    heads = Comment.select().where(Comment.parent.is_null())
+    return heads
 
 
 def get_topic_threads_heads(topic: str) -> List[Comment]:
     """Получение начальных комментариев обсуждений темы `topic`."""
-    threads_heads = Comment.select().where(
+    heads = Comment.select().where(
         Comment.topic == topic, Comment.parent.is_null()
     )
-    return threads_heads
+    return heads
 
 
 def get_thread_comments(comment_id: int) -> List[Comment]:
@@ -64,11 +64,11 @@ def get_thread_comments(comment_id: int) -> List[Comment]:
 
     cte = parent.union(replies)
 
-    thread_comments = cte.select_from(
+    comments = cte.select_from(
         cte.c.id, cte.c.parent_id, cte.c.content, cte.c.timestamp
     ).order_by(cte.c.timestamp)
 
-    if not thread_comments:
+    if not comments:
         raise exceptions.ThreadDoesNotExist()
 
-    return thread_comments
+    return comments
