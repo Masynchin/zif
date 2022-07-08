@@ -6,32 +6,30 @@ from api.services import comment_service
 
 
 def test_create_thread_starter_comment():
-    comment_to_create = CommentCreate(
+    data = CommentCreate(
         content="Comment content",
         topic="it",
         parent_id=None,
     )
-    created_comment = comment_service.create_comment(comment_to_create)
+    comment = comment_service.create_comment(data)
 
-    assert created_comment.content == comment_to_create.content
-    assert created_comment.topic == comment_to_create.topic
-    assert created_comment.parent_id is None
+    assert comment.content == data.content
+    assert comment.topic == data.topic
+    assert comment.parent_id is None
 
 
 def test_create_reply_comment():
-    comment_to_reply = CommentCreate(content="Comment content", parent_id=None)
-    comment_to_reply = comment_service.create_comment(comment_to_reply)
+    comment_data = CommentCreate(content="Comment content", parent_id=None)
+    comment = comment_service.create_comment(comment_data)
 
-    reply_comment = CommentCreate(
-        content="Comment content", parent_id=comment_to_reply.id
-    )
-    reply_comment = comment_service.create_comment(reply_comment)
+    reply_data = CommentCreate(content="Comment content", parent_id=comment.id)
+    reply = comment_service.create_comment(reply_data)
 
-    assert reply_comment.content == reply_comment.content
-    assert reply_comment.parent_id == comment_to_reply.id
+    assert reply.content == reply.content
+    assert reply.parent_id == comment.id
 
 
 def test_reply_to_non_existed_comment():
     with pytest.raises(exceptions.CommentParentDoesNotExist):
-        reply_comment = CommentCreate(content="Comment content", parent_id=-1)
-        comment_service.create_comment(reply_comment)
+        data = CommentCreate(content="Comment content", parent_id=-1)
+        comment_service.create_comment(data)
