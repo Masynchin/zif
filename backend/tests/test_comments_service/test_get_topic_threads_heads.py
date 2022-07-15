@@ -1,10 +1,10 @@
-from api.services import comment_service
+from api.services import comment_service, thread_service
 
 
 def test_get_topic_threads_heads():
-    comment_service.create_comment(content="", parent_id=None, topic="it")
-    comment_service.create_comment(content="", parent_id=None, topic="it")
-    comment_service.create_comment(content="", parent_id=None, topic="it")
+    thread_service.create_thread(content="", topic="it")
+    thread_service.create_thread(content="", topic="it")
+    thread_service.create_thread(content="", topic="it")
 
     heads = comment_service.get_topic_threads_heads(topic="it")
     for head in heads:
@@ -13,11 +13,9 @@ def test_get_topic_threads_heads():
 
 
 def test_exact_thread_topic():
-    comment_service.create_comment(content="", parent_id=None, topic="it")
-    comment_service.create_comment(content="", parent_id=None, topic="watch")
-    comment_service.create_comment(
-        content="", parent_id=None, topic="politics"
-    )
+    thread_service.create_thread(content="", topic="it")
+    thread_service.create_thread(content="", topic="watch")
+    thread_service.create_thread(content="", topic="politics")
 
     heads = comment_service.get_topic_threads_heads(topic="it")
     assert len(heads) == 1
@@ -25,9 +23,9 @@ def test_exact_thread_topic():
 
 
 def test_no_children():
-    comment_service.create_comment(content="head", parent_id=None, topic="it")
-    comment_service.create_comment(content="child", parent_id=1, topic="it")
-    comment_service.create_comment(content="child", parent_id=2, topic="it")
+    thread_service.create_thread(content="head", topic="it")
+    comment_service.create_comment(content="child", parent_id=1)
+    comment_service.create_comment(content="child", parent_id=2)
 
     heads = comment_service.get_topic_threads_heads(topic="it")
     assert len(heads) == 1

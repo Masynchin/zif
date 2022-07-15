@@ -1,11 +1,11 @@
 import pytest
 
 from api import exceptions
-from api.services import comment_service
+from api.services import comment_service, thread_service
 
 
 def test_get_thread_comments():
-    comment_service.create_comment(content="head", parent_id=None, topic="it")
+    thread_service.create_thread(content="head", topic="it")
     comment_service.create_comment(content="child", parent_id=1)
     comment_service.create_comment(content="child", parent_id=2)
 
@@ -14,11 +14,9 @@ def test_get_thread_comments():
 
 
 def test_only_from_one_thread():
-    comment_service.create_comment(content="head", parent_id=None, topic="it")
+    thread_service.create_thread(content="head", topic="it")
     comment_service.create_comment(content="child", parent_id=1)
-    comment_service.create_comment(
-        content="another head", parent_id=None, topic="it"
-    )
+    comment_service.create_comment(content="another head", parent_id=None)
     comment_service.create_comment(content="another child", parent_id=3)
 
     comments = comment_service.get_thread_comments(comment_id=1)
