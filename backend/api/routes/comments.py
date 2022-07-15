@@ -5,7 +5,7 @@ from typing import List
 from fastapi import APIRouter
 
 from api.schemas.comment import CommentCreate, CommentGet
-from api.services import comment_service
+from api.services import comment_service, thread_service
 
 
 router = APIRouter(prefix="/comments")
@@ -38,5 +38,5 @@ async def handle_get_thread_comments(topic: str, comment_id: int):
 @router.post("/")
 async def handle_create_topic_comment(comment: CommentCreate):
     """Создание комментария."""
-    comment = comment_service.create_comment(**comment.dict())
+    comment = thread_service.create_thread(comment.content, comment.topic)
     return comment
