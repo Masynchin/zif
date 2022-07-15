@@ -1,18 +1,21 @@
 """Сервис для работы с комментариями."""
 
-from typing import List
+from typing import List, Optional
 
 from peewee import IntegrityError as PeeweeIntegrityError
 
 from api import exceptions
 from api.db.models import Comment
-from api.schemas.comment import CommentCreate
 
 
-def create_comment(comment_data: CommentCreate) -> Comment:
+def create_comment(
+    content: str, topic: Optional[str] = None, parent_id: Optional[int] = None
+) -> Comment:
     """Создание комментария."""
     try:
-        comment = Comment.create(**comment_data.dict())
+        comment = Comment.create(
+            content=content, topic=topic, parent_id=parent_id
+        )
         comment.save()
     except PeeweeIntegrityError:
         raise exceptions.CommentParentDoesNotExist()

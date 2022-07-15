@@ -1,16 +1,10 @@
-from api.schemas.comment import CommentCreate
 from api.services import comment_service
 
 
 def test_get_topic_threads_heads():
-    datas = [
-        CommentCreate(content="", parent_id=None, topic="it"),
-        CommentCreate(content="", parent_id=None, topic="it"),
-        CommentCreate(content="", parent_id=None, topic="it"),
-    ]
-
-    for data in datas:
-        comment_service.create_comment(data)
+    comment_service.create_comment(content="", parent_id=None, topic="it")
+    comment_service.create_comment(content="", parent_id=None, topic="it")
+    comment_service.create_comment(content="", parent_id=None, topic="it")
 
     heads = comment_service.get_topic_threads_heads(topic="it")
     for head in heads:
@@ -19,14 +13,11 @@ def test_get_topic_threads_heads():
 
 
 def test_exact_thread_topic():
-    datas = [
-        CommentCreate(content="", parent_id=None, topic="it"),
-        CommentCreate(content="", parent_id=None, topic="watch"),
-        CommentCreate(content="", parent_id=None, topic="politics"),
-    ]
-
-    for data in datas:
-        comment_service.create_comment(data)
+    comment_service.create_comment(content="", parent_id=None, topic="it")
+    comment_service.create_comment(content="", parent_id=None, topic="watch")
+    comment_service.create_comment(
+        content="", parent_id=None, topic="politics"
+    )
 
     heads = comment_service.get_topic_threads_heads(topic="it")
     assert len(heads) == 1
@@ -34,14 +25,9 @@ def test_exact_thread_topic():
 
 
 def test_no_children():
-    datas = [
-        CommentCreate(content="head", parent_id=None, topic="it"),
-        CommentCreate(content="child", parent_id=1, topic="it"),
-        CommentCreate(content="child", parent_id=2, topic="it"),
-    ]
-
-    for data in datas:
-        comment_service.create_comment(data)
+    comment_service.create_comment(content="head", parent_id=None, topic="it")
+    comment_service.create_comment(content="child", parent_id=1, topic="it")
+    comment_service.create_comment(content="child", parent_id=2, topic="it")
 
     heads = comment_service.get_topic_threads_heads(topic="it")
     assert len(heads) == 1

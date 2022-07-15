@@ -38,5 +38,5 @@ async def handle_get_thread_comments(topic: str, comment_id: int):
 @router.post("/")
 async def handle_create_topic_comment(comment: CommentCreate):
     """Создание комментария."""
-    comment = comment_service.create_comment(comment)
+    comment = comment_service.create_comment(**comment.dict())
     return comment
