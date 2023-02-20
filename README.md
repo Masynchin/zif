@@ -11,7 +11,7 @@
 ## Технологии
 
 Фронт:
-- [React](https://github.com/facebook/react) (через [create-react-app](https://github.com/facebook/create-react-app))
+- [React](https://github.com/facebook/react)
 - [Redux](https://github.com/reduxjs/redux)
 - [TailwindCSS](https://github.com/tailwindlabs/tailwindcss)
 
