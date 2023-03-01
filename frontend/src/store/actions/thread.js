@@ -20,3 +20,12 @@ export const getThread = (topic, threadId) => async (dispatch, getState) => {
     payload: threadData,
   });
 };
+
+export const createReply = (reply) => async (dispatch, getState) => {
+  const replyData = await api.createReply(reply);
+
+  dispatch({
+    type: THREAD_INSERT,
+    payload: replyData,
+  });
+};
