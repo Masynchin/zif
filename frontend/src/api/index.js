@@ -19,3 +19,7 @@ export async function insertTopic(comment) {
   return (await axios.post("http://localhost:8000/api/threads/", comment)).data
     .__data__;
 }
+
+export async function createReply(reply) {
+  return (await axios.post("http://localhost:8000/api/comments/", reply)).data;
+}

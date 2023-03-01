@@ -11,6 +11,8 @@ export default function threadReducer(state = initialState, action) {
       return { ...state, fetching: true };
     case THREAD_FETCH_SUCCESS:
       return { ...state, data: action.payload, fetching: false };
+    case THREAD_INSERT:
+      return { ...state, data: [...state.data, action.payload] };
     default:
       return state;
   }

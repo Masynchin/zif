@@ -1,14 +1,12 @@
-import { useRouteMatch } from "react-router";
-import CommentButton from "./CommentButton";
-
-export default function CommentButtons({ id }) {
-  let { url } = useRouteMatch();
-
+export default function CommentButtons({ onReply }) {
   return (
     <div className="flex space-x-4">
-      <CommentButton url={url} id={id}>
+      <button
+        className="font-sans font-semibold text-red-600"
+        onClick={onReply}
+      >
         Ответить
-      </CommentButton>
+      </button>
     </div>
   );
 }
