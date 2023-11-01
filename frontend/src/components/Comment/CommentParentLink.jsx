@@ -7,7 +7,6 @@ export default function CommentParentLink({ parent_id }) {
         to={`#${parent_id}`}
         className="text-red-500"
       >{`#${parent_id}`}</Link>
-      to
       <br></br>
     </>
   );
