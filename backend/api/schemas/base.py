@@ -3,7 +3,7 @@
 from typing import Any
 
 import peewee
-from pydantic import BaseModel as PydanticBaseModel
+from pydantic import ConfigDict, BaseModel as PydanticBaseModel
 from pydantic.utils import GetterDict
 
 
@@ -24,8 +24,4 @@ class PeeweeGetterDict(GetterDict):
 class BaseModel(PydanticBaseModel):
     """Базовый класс наших моделей."""
 
-    class Config:
-        """Базовая конфигурация для совместимости с Peewee."""
-
-        orm_mode = True
-        getter_dict = PeeweeGetterDict
+    model_config = ConfigDict(from_attributes=True, getter_dict=PeeweeGetterDict)
