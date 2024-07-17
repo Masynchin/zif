@@ -1,81 +1,57 @@
 # zif
 
-## Предназначение
+## О проекте
 
-Этот проект я создал для изучения React.
+ZIF - это социальная сеть, форум.
 
-## Что это такое?
+Этот проект я создал для изучения фуллстек-приложений на Python (FastAPI) и React.
 
-Это - форум, маленькая версия Двача.
+## Стек
 
-## Технологии
-
-Фронт:
+Фронтенд:
 - [React](https://github.com/facebook/react)
 - [Redux](https://github.com/reduxjs/redux)
 - [TailwindCSS](https://github.com/tailwindlabs/tailwindcss)
 
-Бэк:
+Бэкенд:
 - [FastAPI](https://github.com/tiangolo/fastapi) - веб-фреймворк
 - [PeeWee](https://github.com/coleifer/peewee) - ORM
 
-## Работа с проектом
+CI/CD:
+- [GitHub Actions](https://github.com/features/actions) в CI для unit-тестов
 
-### Установка зависимостей
+Деплой:
+- [Docker Compose](https://github.com/docker/compose)
 
-#### Бэкенд
+## Запуск проекта
 
-Для запуска проекта:
+### Через Docker Compose
 
+Запустите проект с помощью команды:
+
+~~~sh
+docker compose up --detach
+~~~
+
+После этого на `http://localhost:80` у вас открылась страница проекта.
+
+### Вручную
+
+Установите зависимости бэкенда и запустите сервер:
+ 
 ~~~sh
 cd backend
 pip install -r requirements.txt
+uvicorn --factory main:create_app
 ~~~
 
-Для разработки (включает зависимости для запуска):
-
-~~~sh
-cd backend
-pip install -r requirements-dev.txt
-~~~
-
-#### Фронтенд
+Установите зависимости фронтенда и запустите:
 
 ~~~sh
 cd frontend
 npm install
+npm run start
 ~~~
-
-### Переменные окружения
-
-- `stage` - где запускается проект (`dev` - при разработке, `prod` - в продакшене)
-
-### Запуск
-
-#### При разработке
 
 Фронтенд самостоятельно обрабатывает запросы к файлам фронтенда.
 Бекэнд обрабатывает только запросы к API.
-
-~~~sh
-# /frontend
-npm run start
-
-# /backend
-set stage=dev
-uvicorn --factory main:create_app
-~~~
-
-#### В продакшене
-
-Фронтенд компилирует статические файлы.
-Бэкенд обрабатывает как запросы к API, так и запросы к файлам статики.
-
-~~~sh
-# /frontend
-npm run build
-
-# /backend
-set stage=prod
-uvicorn --factory main:create_app
-~~~
